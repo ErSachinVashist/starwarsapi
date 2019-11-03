@@ -13,7 +13,6 @@ RUN yum clean all
 RUN curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -
 RUN yum -y install nodejs
 RUN yum groupinstall 'Development Tools' -y
-RUN yum install wget vim screen ImageMagick -y
 RUN mkdir -p /root/sachin
 COPY . /root/sachin
 RUN cd /root/sachin; npm install; npm install loopback -g; npm install pm2 -g
