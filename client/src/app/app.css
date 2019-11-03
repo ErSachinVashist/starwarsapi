@@ -1,0 +1,40 @@
+html,body{
+    margin:0px;
+    background: ghostwhite;
+}
+
+.main-wrapper{
+    margin:10px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: .2;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .2;
+    }
+}
+.syncing{
+    font-size:20px;
+    color:lightslategrey;
+    font-weight: bolder;
+}
+.syncing span {
+    animation-name: blink;
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+.syncing span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.syncing span:nth-child(3) {
+    animation-delay: .4s;
+}
+

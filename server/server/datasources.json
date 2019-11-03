@@ -1,0 +1,18 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "sw_database": {
+    "host": "",
+    "port": 0,
+    "url": "mongodb+srv://sw_user:sw_password@startwarsdb-lx9ig.mongodb.net/test?retryWrites=true&w=majority",
+    "database": "startwarsDb",
+    "password": "sw_pass",
+    "name": "sw_database",
+    "user": "sw_user",
+    "useNewUrlParser": true,
+    "useUnifiedTopology": true,
+    "connector": "mongodb"
+  }
+}

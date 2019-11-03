@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ]
+  },
+  "User": {
+    "dataSource": "db",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "sw_database",
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "users",
+        "foreignKey": "userId"
+      }
+    }
+  },
+  "ACL": {
+    "dataSource": "sw_database",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "sw_database",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "sw_database",
+    "public": false
+  },
+  "users": {
+    "dataSource": "sw_database",
+    "public": true
+  },
+  "searched": {
+    "dataSource": "sw_database",
+    "public": true
+  }
+}
