@@ -119,7 +119,7 @@ class SearchArea extends Component {
 
                 {searchList.loading?
                 <Typography variant='h5' align='center'>Loading ...</Typography>:
-                searchList.length>0?<RenderInfo FetchSwapData={FetchSwapData} searchData={selectedSearch?selectedSearch:searchList[0]} classes={classes}/>:
+                searchList.length>0?<RenderInfo FetchSwapData={FetchSwapData} selectSearch={this.selectSearch} searchData={selectedSearch?selectedSearch:searchList[0]} classes={classes}/>:
                     <Typography variant='h5' align='center'>No Search Found</Typography>
                 }
             </Grid>

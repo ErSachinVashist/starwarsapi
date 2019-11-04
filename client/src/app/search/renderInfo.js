@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 export default function RecipeReviewCard(props) {
-    const {classes,searchData,FetchSwapData} = props,data=searchData.searchData;
+    const {classes,searchData,FetchSwapData,selectSearch} = props,data=searchData.searchData;
     let finalObj={
         title:'No information found',
         subheader:'suggestion : please check spellings or right correct ID',
@@ -34,7 +34,7 @@ export default function RecipeReviewCard(props) {
                     content :<span>
                         <p>Producer : {data.producer}</p>
                         {data.opening_crawl}</span>,
-                    icon:'',
+                    icon:'https://icon-library.net/images/film-icon/film-icon-16.jpg',
                     urls:['characters','planets','species','starships','vehicles']
                 };
                 case 'people': return {
@@ -48,7 +48,7 @@ export default function RecipeReviewCard(props) {
                         <li>Eye Color : {data.eye_color}</li>
                         <li>Skin Color : {data.skin_color}</li>
                     </ul>,
-                    icon:'',
+                    icon:'https://cdn0.iconfinder.com/data/icons/business-concepts-3/399/Superhero-512.png',
                     urls:['homeworld','species','starships','vehicles','films']
 
                 };
@@ -64,8 +64,8 @@ export default function RecipeReviewCard(props) {
                         <li>Rotation Period : {data.rotation_period}</li>
                         <li>Surface Water : {data.surface_water}</li>
                     </ul>,
-                    icon:'',
-                    films:['films','residents','people']
+                    icon:'https://cdn3.iconfinder.com/data/icons/space-lineal-color-set/512/Saturn-512.png',
+                    urls:['films','residents','people']
                 };
                 case 'species': return {
                     title:data.name,
@@ -79,7 +79,7 @@ export default function RecipeReviewCard(props) {
                         <li>Eye Color : {data.eye_colors}</li>
                         <li>Skin Color : {data.skin_colors}</li>
                     </ul>,
-                    icon:'',
+                    icon:'https://icons-for-free.com/iconfiles/png/512/vader+darth+vader+lord+sith+lord+sith+sith+star+wars+strar+wars-1320190551463123211.png',
                     urls:['films','homeworld','people']
 
                 };
@@ -95,7 +95,7 @@ export default function RecipeReviewCard(props) {
                         <li>Crew : {data.crew}</li>
                         <li>Length : {data.length}</li>
                     </ul>,
-                    icon:'',
+                    icon:'https://image.flaticon.com/icons/png/512/86/86580.png',
                     urls:['films']
                 };
                 case 'vehicles': return  {
@@ -111,7 +111,7 @@ export default function RecipeReviewCard(props) {
                         <li>Length : {data.length}</li>
                         <li>Vehicle Class : {data.vehicle_class}</li>
                     </ul>,
-                    icon:'',
+                    icon:'https://i.pinimg.com/236x/9d/3b/ab/9d3bab96fda5f4e89f93ca7744a0681d.jpg',
                     urls:['films']
 
                 };
@@ -119,9 +119,7 @@ export default function RecipeReviewCard(props) {
 
             }
         })()
-
     }
-
     return (
         <>
             <Typography variant='h2' className={classes.catTitle} align='right'>{searchData.searchCat.toUpperCase()}</Typography>
@@ -143,15 +141,22 @@ export default function RecipeReviewCard(props) {
                 {finalObj.urls && finalObj.urls.map((url,index)=>{
                     return <Button key={index}
                     onClick={()=>{
+                        let filter={searchCat:null,searchKey:null}
                          if(data[url] && data[url].length>0){
-                             let keysArray=[]
+                             selectSearch(null);
+                             let keysArray=data[url];
                              if(Array.isArray(data[url]) && data[url].length>0){
                                  keysArray=data[url][0]
                              }
                              keysArray=keysArray.split('/')
                              keysArray=keysArray.slice(keysArray.length-3,keysArray.length-1)
-                             FetchSwapData({searchCat:keysArray[0],searchKey:keysArray[1]})
+                             filter={
+                                 searchCat:keysArray[0],
+                                 searchKey:keysArray[1]
+                             }
                          }
+                        FetchSwapData(filter)
+
                     }}
                     >{url}</Button>
                 })}
