@@ -28,7 +28,7 @@
     "loopback-connector-kv-redis": "^3.0.1",
     "loopback-connector-mongodb": "^4.2.0",
     "loopback-connector-mysql": "^5.4.2",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "serve-favicon": "^2.0.1",
     "socket.io": "^2.3.0",
     "socketio-auth": "^0.1.1",
